@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;700&display=swap');
+
+body {
+  background: #f7f7f7;
+  font-family: 'Georgia', serif;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.logo-shapes {
+  position: relative;
+  width: 191px;
+  height: 312px;
+  margin-bottom: 18px;
+}
+
+/* Barras principales */
+.bar.left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 312px;
+  background: #6d715d;
+}
+
+.bar.bottom {
+  position: absolute;
+  left: 0;
+  top: 294px;
+  width: 191px;
+  height: 18px;
+  background: #6d715d;
+}
+
+.bar.top {
+  position: absolute;
+  left: 36px;
+  top: 0;
+  width: 155px;
+  height: 18px;
+  background: #6d715d;
+}
+
+.bar.right {
+  position: absolute;
+  left: 173px;
+  top: 0px;
+  width: 18px;
+  height: 240px;
+  background: #6d715d;
+}
+
+/* Barras internas */
+.bar.inner-left {
+  position: absolute;
+  left: 36px;
+  top: 36px;
+  width: 18px;
+  height: 240px;
+  background: #b2c49a;
+}
+
+.bar.inner-bottom {
+  position: absolute;
+  left: 36px;
+  top:  258px;
+  width: 155px;
+  height: 18px;
+  background: #b2c49a;
+}
+.dorlock-container {
+  rotate: 45deg;
+  position: absolute;
+  left: 145px;
+  top: 125px;
+}
+
+.bar.dorlock-hight {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  width: 12px;
+  height: 42px;
+  background: #b2c49a;
+}
+
+.bar.dorlock-low {
+  position: absolute;
+  left: 0px;
+  top: 30px;
+  width: 22px;
+  height: 12px;
+  background: #b2c49a;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.brand {
+  font-size: 75px;
+  color: #b2c49a;
+  font-family: 'DM Serif Display', serif;
+  font-weight: normal;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.slogan {
+  font-size: 17px;
+  color: #222;
+  letter-spacing: 0.3em;
+  margin-top: 6px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Estado inicial: todas las barras plegadas */
+
+/* Animación de despliegue */
+@keyframes unfold-bar {
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Ajuste para barras horizontales: pliegan desde la izquierda */
+.bar {
+  transform-origin: left bottom;
+  transform: scaleY(0);
+  opacity: 0;
+  animation: unfold-bar 0.5s forwards;
+}
+.bar.right {
+  transform-origin: left top;
+  transform: scaleY(0);
+  opacity: 0;
+  animation: unfold-bar 0.5s forwards;
+}
+.bar.top {
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: unfold-bar-x 0.5s forwards;
+}
+.bar.bottom,
+.bar.inner-bottom,
+.bar.dorlock-low
+{
+  transform-origin: right center;
+  transform: scaleX(0);
+  animation: unfold-bar-x 0.5s forwards;
+}
+@keyframes unfold-bar-x {
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Secuencia de animación sincronizada (debe ir después de las reglas de animación) */
+.bar.bottom        { animation-delay: 0s; }
+.bar.left          { animation-delay: 0.5s; }
+.bar.top           { animation-delay: 1s; }
+.bar.right         { animation-delay: 1.5s; }
+.bar.inner-bottom  { animation-delay: 2s; }
+.bar.inner-left    { animation-delay: 2.5s; }
+.bar.dorlock-hight { animation-delay: 3s; }
+.bar.dorlock-low   { animation-delay: 3.6s; } 
