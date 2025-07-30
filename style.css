@@ -1,0 +1,25 @@
+#LogoPuerta {
+    position: relative;
+}
+
+#p_externa {
+    position: relative;
+}
+
+#p_e_u {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    width: 153px;
+    height: 18px;
+    background: #333; /* Cambia el color si lo deseas */
+}
+
+#p_e_l {
+    position: absolute;
+    top: 54px; /* 36px (top de p_e_u) + 18px (alto de p_e_u) */
+    left: 0;
+    width: 18px;
+    height: 312px;
+    background: #666; /* Cambia el color si lo deseas */
+}
