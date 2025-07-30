@@ -70,11 +70,12 @@ body {
 .bar.inner-bottom {
   position: absolute;
   left: 36px;
-  top:  258px;
+  top: 258px;
   width: 155px;
   height: 18px;
   background: #b2c49a;
 }
+
 .dorlock-container {
   rotate: 45deg;
   position: absolute;
@@ -124,50 +125,44 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-/* Estado inicial: todas las barras plegadas */
-
-/* Animación de despliegue */
-@keyframes unfold-bar {
-  to {
-    transform: scaleY(1);
-    opacity: 1;
-  }
+/* Animación en bucle: desarmar y armar */
+@keyframes fold-unfold-bar {
+  0%   { transform: scaleY(1); opacity: 1; }
+  10%  { transform: scaleY(0); opacity: 0; }
+  50%  { transform: scaleY(0); opacity: 0; }
+  60%  { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+@keyframes fold-unfold-bar-x {
+  0%   { transform: scaleX(1); opacity: 1; }
+  10%  { transform: scaleX(0); opacity: 0; }
+  50%  { transform: scaleX(0); opacity: 0; }
+  60%  { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 1; }
 }
 
-/* Ajuste para barras horizontales: pliegan desde la izquierda */
+/* Aplicar animaciones a cada barra */
 .bar {
   transform-origin: left bottom;
-  transform: scaleY(0);
-  opacity: 0;
-  animation: unfold-bar 0.5s forwards;
+  animation: fold-unfold-bar 7s linear infinite;
 }
-.bar.right {
+.bar.right,
+.bar.dorlock-hight {
   transform-origin: left top;
-  transform: scaleY(0);
-  opacity: 0;
-  animation: unfold-bar 0.5s forwards;
+  animation: fold-unfold-bar 7s linear infinite;
 }
 .bar.top {
   transform-origin: left center;
-  transform: scaleX(0);
-  animation: unfold-bar-x 0.5s forwards;
+  animation: fold-unfold-bar-x 7s linear infinite;
 }
 .bar.bottom,
 .bar.inner-bottom,
-.bar.dorlock-low
-{
+.bar.dorlock-low {
   transform-origin: right center;
-  transform: scaleX(0);
-  animation: unfold-bar-x 0.5s forwards;
-}
-@keyframes unfold-bar-x {
-  to {
-    transform: scaleX(1);
-    opacity: 1;
-  }
+  animation: fold-unfold-bar-x 7s linear infinite;
 }
 
-/* Secuencia de animación sincronizada (debe ir después de las reglas de animación) */
+/* Delays sincronizados para el orden de desarmado y armado */
 .bar.bottom        { animation-delay: 0s; }
 .bar.left          { animation-delay: 0.5s; }
 .bar.top           { animation-delay: 1s; }
@@ -175,4 +170,4 @@ body {
 .bar.inner-bottom  { animation-delay: 2s; }
 .bar.inner-left    { animation-delay: 2.5s; }
 .bar.dorlock-hight { animation-delay: 3s; }
-.bar.dorlock-low   { animation-delay: 3.6s; } 
+.bar.dorlock-low   { animation-delay: 3.6s; }

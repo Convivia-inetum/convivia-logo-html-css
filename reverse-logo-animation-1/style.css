@@ -20,7 +20,6 @@ body {
   margin-bottom: 18px;
 }
 
-/* Barras principales */
 .bar.left {
   position: absolute;
   left: 0;
@@ -57,7 +56,6 @@ body {
   background: #6d715d;
 }
 
-/* Barras internas */
 .bar.inner-left {
   position: absolute;
   left: 36px;
@@ -70,11 +68,12 @@ body {
 .bar.inner-bottom {
   position: absolute;
   left: 36px;
-  top:  258px;
+  top: 258px;
   width: 155px;
   height: 18px;
   background: #b2c49a;
 }
+
 .dorlock-container {
   rotate: 45deg;
   position: absolute;
@@ -124,55 +123,97 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-/* Estado inicial: todas las barras plegadas */
-
-/* Animación de despliegue */
+/* Animaciones reversa */
 @keyframes unfold-bar {
   to {
     transform: scaleY(1);
     opacity: 1;
   }
+
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
 }
 
-/* Ajuste para barras horizontales: pliegan desde la izquierda */
-.bar {
-  transform-origin: left bottom;
-  transform: scaleY(0);
-  opacity: 0;
-  animation: unfold-bar 0.5s forwards;
+@keyframes fold-bar {
+  to {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  from {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
-.bar.right {
-  transform-origin: left top;
-  transform: scaleY(0);
-  opacity: 0;
-  animation: unfold-bar 0.5s forwards;
-}
-.bar.top {
-  transform-origin: left center;
-  transform: scaleX(0);
-  animation: unfold-bar-x 0.5s forwards;
-}
-.bar.bottom,
-.bar.inner-bottom,
-.bar.dorlock-low
-{
-  transform-origin: right center;
-  transform: scaleX(0);
-  animation: unfold-bar-x 0.5s forwards;
-}
+
 @keyframes unfold-bar-x {
   to {
     transform: scaleX(1);
     opacity: 1;
   }
+
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
 }
 
-/* Secuencia de animación sincronizada (debe ir después de las reglas de animación) */
-.bar.bottom        { animation-delay: 0s; }
-.bar.left          { animation-delay: 0.5s; }
-.bar.top           { animation-delay: 1s; }
-.bar.right         { animation-delay: 1.5s; }
-.bar.inner-bottom  { animation-delay: 2s; }
-.bar.inner-left    { animation-delay: 2.5s; }
-.bar.dorlock-hight { animation-delay: 3s; }
-.bar.dorlock-low   { animation-delay: 3.6s; } 
+@keyframes fold-bar-x {
+  to {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  from {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.bar {
+  transform-origin: left bottom;
+  transform: scaleY(1);
+  opacity: 1;
+  animation: fold-bar 0.5s forwards 3s;
+}
+
+.bar.right,
+.bar.dorlock-hight {
+  transform-origin: left top;
+  transform: scaleY(1);
+  opacity: 1;
+  animation: fold-bar 0.5s forwards 4.5s;
+}
+
+.bar.top {
+  transform-origin: left center;
+  transform: scaleX(1);
+  opacity: 1;
+  animation: fold-bar-x 0.5s forwards 4s;
+}
+
+.bar.bottom,
+.bar.inner-bottom,
+.bar.dorlock-low {
+  transform-origin: right center;
+  transform: scaleX(1);
+  opacity: 1;
+  animation: fold-bar-x 0.5s forwards 3s;
+}
+
+/* Delays sincronizados */
+.bar.dorlock-low   { animation-delay: 2s; }
+.bar.dorlock-hight { animation-delay: 2.5s; }
+.bar.inner-left    { animation-delay: 3s; }
+.bar.inner-bottom  { animation-delay: 3.5s; }
+.bar.right         { animation-delay: 4s; }
+.bar.top           { animation-delay: 4.5s; }
+.bar.left          { animation-delay: 5s; }
+.bar.bottom        { animation-delay: 5.5s; }
+
+
+
+
+
