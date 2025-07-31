@@ -147,14 +147,14 @@ body {
   opacity: 0;
   animation: unfold-bar 0.5s forwards;
 }
-.bar.top {
+.bar.top, 
+.bar.dorlock-low{
   transform-origin: left center;
   transform: scaleX(0);
   animation: unfold-bar-x 0.5s forwards;
 }
 .bar.bottom,
-.bar.inner-bottom,
-.bar.dorlock-low
+.bar.inner-bottom
 {
   transform-origin: right center;
   transform: scaleX(0);
@@ -174,5 +174,5 @@ body {
 .bar.right         { animation-delay: 1.5s; }
 .bar.inner-bottom  { animation-delay: 2s; }
 .bar.inner-left    { animation-delay: 2.5s; }
-.bar.dorlock-hight { animation-delay: 3s; }
-.bar.dorlock-low   { animation-delay: 3.6s; } 
+.bar.dorlock-low   { animation-delay: 3s; } 
+.bar.dorlock-hight { animation-delay: 3.5s; }
